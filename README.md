@@ -1,5 +1,4 @@
 # ANGULAR-MANUAL-BOOTSTRAP
-angular Manual Bootstrap
 
 This is the sequence that your code should follow:
 
