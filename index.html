@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- Angular Automatic Intialization -->
+<!-- <html ng-app="" ng-strict-di>
+	<head>
+	<title>Angular Manuall Bootstrapping</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/custom.css" />
+	</head>
+	<body>
+	{{"From "+"Angular "+"Automatic Initialization"}}
+	<script src="lib/js/angular.js"></script>
+	</body>
+</html> -->
+<!-- <html>
+	<head>
+	<title>Angular Manual Bootstrapping</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/custom.css" />	
+	</head>
+	<body>		
+		<div class="manualClass" ng-controller="ManualCtrl">
+			<h1>I am Triggering From {{value}} Bootstrapping</h1>
+		</div>
+	<script src="lib/js/angular.js"></script>
+	<script type="text/javascript">
+		angular.module("MyApp",[])
+		.controller("ManualCtrl",function($scope){
+			$scope.value = "Manual";
+		});
+		var ele = document.getElementsByClassName('manualClass')[0];
+		angular.element(document).ready(function(){
+			angular.bootstrap(ele,['MyApp']);
+		});
+	</script>
+	</body>	
+</html> -->
+<html>
+	<head>
+	<title>Angular Manual Bootstrapping</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/custom.css" />	
+	</head>
+	<body ng-app="MyApp">		
+		<div class="manualClass" ng-controller="ManualCtrl">
+			<h1>I am Triggering From {{value}} Bootstrapping</h1>
+			<input type="text" ng-model="value">
+			<button ng-vijay = "print(value)"> Click Me </button>
+		</div>
+	<script src="lib/js/angular.js"></script>
+	<script type="text/javascript">
+		angular.module("MyApp",[])
+		.controller("ManualCtrl",function($scope){
+			$scope.value = "Manual";
+			$scope.print = function(val){
+				console.log("value",val);
+			};
+		}).directive("ngVijay", function($parse){
+			return{
+				restrict:'A',
+				scope:{
+					ngVijay:'&'
+				},
+				link:function(scope,element,attr){
+					element.on('click',function(){
+						$parse(scope.ngVijay)(scope);
+					});
+				}
+			}			
+		});		
+	</script>
+	</body>	
+</html>
+
+<!-- Angular Manual Bootstrapping -->
